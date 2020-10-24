@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/bence/git_workspace/Dyadic_Collaboration/Graph_Networks/Phases/Phase1/Two_ended_chain/Saves/model.ckpt"
+all_model_checkpoint_paths: "/home/bence/git_workspace/Dyadic_Collaboration/Graph_Networks/Phases/Phase1/Two_ended_chain/Saves/model.ckpt"

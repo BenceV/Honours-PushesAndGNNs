@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b38bfb89-93c0-4c90-897a-911593643127" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation_functions_moving_contact_no_loss_on_fixed.py" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation_functions_moving_contact_no_loss_on_fixed.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Phase1/Moving_Rigidbody/.ipynb_checkpoints/RigidBody_Constrained_no-gravity_small-fixed-box_fix-not-in-error-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../Phase1/Moving_Rigidbody/.ipynb_checkpoints/RigidBody_Constrained_no-gravity_small-fixed-box_fix-not-in-error-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Phase1/Moving_Rigidbody/RigidBody_Constrained_no-gravity_small-fixed-box_fix-not-in-error.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../Phase1/Moving_Rigidbody/RigidBody_Constrained_no-gravity_small-fixed-box_fix-not-in-error.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Phase1/Moving_Rigidbody/small/no_gravity_fixed_box_fixed_not_in_error/ntr=100000_btr=256_bge=100_date=031220_stepError_seed=1/Animations/FullRollout/trajectory_te_masses.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Phase1/Moving_Rigidbody/small/no_gravity_fixed_box_fixed_not_in_error/ntr=100000_btr=256_bge=100_date=031220_stepError_seed=1/Animations/GroundTruth/ground_truth_trajectory_ge_masses.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Phase1/Moving_Rigidbody/small/no_gravity_fixed_box_fixed_not_in_error/ntr=100000_btr=256_bge=100_date=031220_stepError_seed=1/Animations/GroundTruth/ground_truth_trajectory_te_masses.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Phase1/Moving_Rigidbody/small/no_gravity_fixed_box_fixed_not_in_error/ntr=100000_btr=256_bge=100_date=031220_stepError_seed=1/Plots/ConvergencePlot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Phase1/Moving_Rigidbody/small/no_gravity_fixed_box_fixed_not_in_error/ntr=100000_btr=256_bge=100_date=031220_stepError_seed=1/Saves/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Phase1/Moving_Rigidbody/small/no_gravity_fixed_box_fixed_not_in_error/ntr=100000_btr=256_bge=100_date=031220_stepError_seed=1/Saves/logged_iterations.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Phase1/Moving_Rigidbody/small/no_gravity_fixed_box_fixed_not_in_error/ntr=100000_btr=256_bge=100_date=031220_stepError_seed=1/Saves/logged_time_steps.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Phase1/Moving_Rigidbody/small/no_gravity_fixed_box_fixed_not_in_error/ntr=100000_btr=256_bge=100_date=031220_stepError_seed=1/Saves/losses_ge.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Phase1/Moving_Rigidbody/small/no_gravity_fixed_box_fixed_not_in_error/ntr=100000_btr=256_bge=100_date=031220_stepError_seed=1/Saves/losses_step_ge.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Phase1/Moving_Rigidbody/small/no_gravity_fixed_box_fixed_not_in_error/ntr=100000_btr=256_bge=100_date=031220_stepError_seed=1/Saves/losses_step_te.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Phase1/Moving_Rigidbody/small/no_gravity_fixed_box_fixed_not_in_error/ntr=100000_btr=256_bge=100_date=031220_stepError_seed=1/Saves/losses_step_tr.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Phase1/Moving_Rigidbody/small/no_gravity_fixed_box_fixed_not_in_error/ntr=100000_btr=256_bge=100_date=031220_stepError_seed=1/Saves/losses_te.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Phase1/Moving_Rigidbody/small/no_gravity_fixed_box_fixed_not_in_error/ntr=100000_btr=256_bge=100_date=031220_stepError_seed=1/Saves/losses_tr.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Phase1/Moving_Rigidbody/small/no_gravity_fixed_box_fixed_not_in_error/ntr=100000_btr=256_bge=100_date=031220_stepError_seed=1/Saves/model.ckpt.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Phase1/Moving_Rigidbody/small/no_gravity_fixed_box_fixed_not_in_error/ntr=100000_btr=256_bge=100_date=031220_stepError_seed=1/Saves/model.ckpt.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Phase1/Moving_Rigidbody/small/no_gravity_fixed_box_fixed_not_in_error/ntr=100000_btr=256_bge=100_date=031220_stepError_seed=1/Saves/model.ckpt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Phase1/Moving_Rigidbody/small/no_gravity_fixed_box_fixed_not_in_error/ntr=100000_btr=256_bge=100_date=031220_stepError_seed=1/Saves/predicted_trajectory_ge.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Phase1/Moving_Rigidbody/small/no_gravity_fixed_box_fixed_not_in_error/ntr=100000_btr=256_bge=100_date=031220_stepError_seed=1/Saves/predicted_trajectory_te.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Phase1/Moving_Rigidbody/small/no_gravity_fixed_box_fixed_not_in_error/ntr=100000_btr=256_bge=100_date=031220_stepError_seed=1/Saves/training_examples.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Phase1/Moving_Rigidbody/small/no_gravity_fixed_box_fixed_not_in_error/ntr=100000_btr=256_bge=100_date=031220_stepError_seed=1/Saves/true_trajectory_ge.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Phase1/Moving_Rigidbody/small/no_gravity_fixed_box_fixed_not_in_error/ntr=100000_btr=256_bge=100_date=031220_stepError_seed=1/Saves/true_trajectory_te.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Phase1/Moving_Rigidbody/small/no_gravity_fixed_box_fixed_not_in_error/ntr=20000_btr=256_bge=100_date=031220_stepError_seed=1/Saves/training_examples.npy" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="ProjectId" id="1XUcHhkYcU6BubFwTiuxBbf2Hgi" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b38bfb89-93c0-4c90-897a-911593643127" name="Default Changelist" comment="" />
+      <created>1581104028166</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1581104028166</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="598" y="416" key="com.intellij.ide.util.TipDialog" timestamp="1584798251540">
+      <screen x="67" y="27" width="1853" height="1173" />
+    </state>
+    <state x="529" y="366" key="com.intellij.ide.util.TipDialog/67.27.1613.1023@67.27.1613.1023" timestamp="1583884313270" />
+    <state x="598" y="416" key="com.intellij.ide.util.TipDialog/67.27.1853.1173@67.27.1853.1173" timestamp="1584798251540" />
+    <state x="536" y="250" width="672" height="678" key="search.everywhere.popup" timestamp="1582492802740">
+      <screen x="67" y="27" width="1613" height="1023" />
+    </state>
+    <state x="536" y="250" width="672" height="678" key="search.everywhere.popup/67.27.1613.1023@67.27.1613.1023" timestamp="1582492802740" />
+  </component>
+</project>

@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/bence/git_workspace/Dyadic_Collaboration/Graph_Networks/Phases/Phase1/One_ended_chain/damping/ntr=100000_btr=256_bge=100_date=022220_stepError_seed=4/Saves/model.ckpt"
+all_model_checkpoint_paths: "/home/bence/git_workspace/Dyadic_Collaboration/Graph_Networks/Phases/Phase1/One_ended_chain/damping/ntr=100000_btr=256_bge=100_date=022220_stepError_seed=4/Saves/model.ckpt"
