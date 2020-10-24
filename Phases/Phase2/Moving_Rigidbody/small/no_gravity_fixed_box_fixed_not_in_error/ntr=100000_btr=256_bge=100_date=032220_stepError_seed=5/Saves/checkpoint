@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/bence/git_workspace/Dyadic_Collaboration/Graph_Networks/Phases/Phase1/Moving_Rigidbody/small/no_gravity_fixed_box_fixed_not_in_error/ntr=100000_btr=256_bge=100_date=032220_stepError_seed=5/Saves/model.ckpt"
+all_model_checkpoint_paths: "/home/bence/git_workspace/Dyadic_Collaboration/Graph_Networks/Phases/Phase1/Moving_Rigidbody/small/no_gravity_fixed_box_fixed_not_in_error/ntr=100000_btr=256_bge=100_date=032220_stepError_seed=5/Saves/model.ckpt"
