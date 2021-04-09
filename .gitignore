@@ -6,6 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
+# CSV files are too big to not ignore them
+*.csv
+*.npy
+
 # Distribution / packaging
 .Python
 build/
