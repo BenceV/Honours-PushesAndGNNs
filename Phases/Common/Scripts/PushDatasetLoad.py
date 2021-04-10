@@ -195,3 +195,34 @@ def outlier_remover(df1, df2, zero_thr):
     #df_2 = df_2.reindex(index=range(df_2.shape[0]))
     
     return df_1, df_2
+
+
+def dataset_formating(df_1, df_2):
+    df_1a = df_1.copy()
+    df_2a = df_2.copy()
+    
+    saa = df_1a.groupby(["trajectory"])[["trajectory"]].count()
+    
+    saa["traj"] = saa.index.values.tolist()
+    cols = saa.columns.tolist()
+    cols = cols[-1:] + cols[:-1]
+    saa = saa[cols]
+    saa_np = saa.to_numpy()
+    av_s = np.mean(saa_np,axis=0)[1]
+    st_s = np.std(saa_np,axis=0)[1]
+    
+    min_rollout_length = np.min(saa_np[saa_np[:,1] > av_s - st_s],axis=0)[1]
+    max_batch_size = len(saa_np[saa_np[:,1] > av_s - st_s])
+    
+    traj_inds = saa_np[saa_np[:,1] > av_s - st_s][:,0]
+    
+    df_1a.set_index('trajectory', drop=False, inplace = True)
+    df_2a.set_index('trajectory', drop=False, inplace = True)
+    
+    df_1a = df_1a.loc[traj_inds]
+    df_2a = df_2a.loc[traj_inds]
+    
+    df_1a.reset_index(drop=True, inplace = True)
+    df_2a.reset_index(drop=True, inplace = True)
+    
+    return min_rollout_length, max_batch_size, df_1a, df_2a

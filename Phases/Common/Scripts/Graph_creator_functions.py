@@ -955,7 +955,7 @@ def rigid_graph_from_pos_all(obj_pos, obj_vel, tip_pos, tip_vel, tip_con, do_con
     
 
     # Edges
-    obj_to_obj = 1.0
+    obj_to_obj = 100.0
     ee_to_obj  = 0.0
     edge = np.array([[obj_to_obj, ee_to_obj]])
     edges = np.repeat(edge, 16, axis=0)
@@ -969,7 +969,7 @@ def rigid_graph_from_pos_all(obj_pos, obj_vel, tip_pos, tip_vel, tip_con, do_con
     
     if not do_cont:
         obj_to_obj = 0.0
-        ee_to_obj  = 1.0
+        ee_to_obj  = 100.0
         senders.extend([5])
         receivers.extend([4])
         edge = np.array([[obj_to_obj, ee_to_obj]])

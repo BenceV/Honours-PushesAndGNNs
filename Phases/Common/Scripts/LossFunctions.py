@@ -69,6 +69,16 @@ def rollout_loss_max(X, Y):
         
     losses = tf.convert_to_tensor(losses, dtype=tf.float32)
     return tf.math.reduce_max(losses, axis=0)
+    
+def rollout_loss_sum(X, Y):
+    losses = []
+    for i in range(len(X)):
+        x = X[i]
+        y = Y[i]
+        losses.append(velocity_loss_single_roll(x,y))
+        
+    losses = tf.convert_to_tensor(losses, dtype=tf.float32)
+    return tf.math.reduce_sum(losses, axis=0)
 
 def rollout_error(X, Y):
     losses = []

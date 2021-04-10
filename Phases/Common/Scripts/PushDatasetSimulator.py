@@ -101,80 +101,6 @@ class PushDatasetSimulator:
         "contact"]
 
         ret = []
-        internal_inds = {}
-        traj_inds = df1.trajectory.unique()
-        if trajectory_ids is not None:
-            traj_inds = trajectory_ids
-        else:
-            siz = batch_size
-            if batch_size > len(traj_inds):
-                siz = len(traj_inds)
-            traj_inds = traj_inds[np.random.choice(len(traj_inds), size=siz, replace=False)]    
-        
-        df_1 = df1.set_index("trajectory", drop=False)
-        df_2 = df2.set_index("trajectory", drop=False)
-        
-        to_del = []
-        for index, i in zip(traj_inds, range(len(traj_inds))):
-            result = {} 
-            a1 = df_1.loc[[index]]    
-            a2 = df_2.loc[[index]]
-            if a1.shape[0] > self.ROLLOUT_TIMESTEPS:
-                # Get only the window slice
-                h = len(a1) - self.ROLLOUT_TIMESTEPS
-
-                window_bottom = np.random.randint(low=0, high=h)
-                a1 = a1.iloc[window_bottom : window_bottom + self.ROLLOUT_TIMESTEPS]
-                a2 = a2.iloc[window_bottom+1 : window_bottom + self.ROLLOUT_TIMESTEPS + 1]
-                inds = range(window_bottom, window_bottom + self.ROLLOUT_TIMESTEPS + 1, 1)
-
-                a1.reset_index(inplace=True, drop=True)
-                a2.reset_index(inplace=True, drop=True)
-
-                a1_col = a1[cols]
-                a2_col = a2[cols]
-
-                result["obj_pos_X"], result["obj_vel_X"], result["tip_pos_X"], result["tip_vel_X"], result["tip_con_X"] = self.convert_state(a1_col)
-                result["obj_pos_Y"], result["obj_vel_Y"], result["tip_pos_Y"], result["tip_vel_Y"], result["tip_con_Y"] = self.convert_state(a2_col)
-                
-                ret.extend([result])
-                internal_inds[index] = np.array(inds)
-            else:
-                to_del.append(i)
-
-        traj_inds = np.delete(traj_inds, to_del)
-
-        return ret, traj_inds, internal_inds
-
-    def get_batch_of_trajectories_alt(self, df1, df2, batch_size, trajectory_ids = None):
-        cols = [
-        "o_t_r_x", 
-        "o_t_r_y",
-        "o_t_l_x",
-        "o_t_l_y",
-        "o_b_r_x",
-        "o_b_r_y",
-        "o_b_l_x",
-        "o_b_l_y",
-        "o_m_m_x",
-        "o_m_m_y",
-        "e_pos_x",
-        "e_pos_y",
-        "o_t_r_x_v", 
-        "o_t_r_y_v",
-        "o_t_l_x_v",
-        "o_t_l_y_v",
-        "o_b_r_x_v",
-        "o_b_r_y_v",
-        "o_b_l_x_v",
-        "o_b_l_y_v",
-        "o_m_m_x_v",
-        "o_m_m_y_v",
-        "e_vel_x",
-        "e_vel_y",
-        "contact"]
-
-        ret = []
         indeces_used = []
         internal_inds = {}
 
@@ -185,12 +111,18 @@ class PushDatasetSimulator:
         df_1 = df1.set_index("trajectory", drop=False)
         df_2 = df2.set_index("trajectory", drop=False)
 
+        while_breaker = 0
+
+
         while(True):
             index = np.random.choice(traj_inds, size=1, replace=False)[0]
         
             result = {} 
             a1 = df_1.loc[[index]]    
             a2 = df_2.loc[[index]]
+
+            while_breaker = while_breaker + 1
+
             if a1.shape[0] > self.ROLLOUT_TIMESTEPS:
                 # Get only the window slice
                 h = len(a1) - self.ROLLOUT_TIMESTEPS
@@ -213,16 +145,21 @@ class PushDatasetSimulator:
                 ret.extend([result])
                 internal_inds[index] = np.array(inds)
 
-            if len(ret) >= batch_size:
+            if len(ret) >= batch_size or while_breaker >= 2048:
                 break
 
         return ret, indeces_used, internal_inds
 
 
-    def get_trajectories(self, df_1, df_2, batch_size, graph_creator, trajectory_ids = None):
+    def get_trajectories(self, df_1, df_2, batch_size, graph_creator, trajectory_ids = None, silent = True):
 
-        b_trajs, traj_inds, internal_inds = self.get_batch_of_trajectories_alt(df_1, df_2, batch_size, trajectory_ids = trajectory_ids)
+        b_trajs, traj_inds, internal_inds = self.get_batch_of_trajectories(df_1, df_2, batch_size, trajectory_ids = trajectory_ids)
         
+        if not silent:
+            traj_inds = np.array(traj_inds)
+            (unique, counts) = np.unique(traj_inds, return_counts=True)
+            frequencies = np.asarray((unique, counts)).T
+
         traj_len = self.ROLLOUT_TIMESTEPS
         X_g = np.empty((0,traj_len))
         Y_g = np.empty((0,traj_len))

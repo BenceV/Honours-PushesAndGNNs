@@ -2,8 +2,8 @@
   "parameters": {
     "model_parameters": {
       "learning_rate": 0.002,
-      "ind_block_number_of_layers": 3,
-      "ful_block_number_of_layers": 3,
+      "ind_block_number_of_layers": 2,
+      "ful_block_number_of_layers": 2,
       "ind_block_latent_size": 256,
       "ful_block_latent_size": 256
     },
@@ -11,10 +11,10 @@
       "number_of_training_iterations": 1000,
       "loss_type": "step",
       "rollout_timesteps": 10,
-      "rollout_timesteps_vis": 50,
-      "training_batch_size": 128,
-      "testing_batch_size": 64,
-      "generalisation_batch_size": 64,
+      "rollout_timesteps_vis": 25,
+      "training_batch_size": 16,
+      "testing_batch_size": 256,
+      "generalisation_batch_size": 256,
       "number_of_processing_steps_tr": 1,
       "number_of_processing_steps_te": 1,
       "number_of_processing_steps_ge": 1
