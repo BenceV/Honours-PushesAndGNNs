@@ -152,7 +152,10 @@ def outlier_remover(df1, df2, zero_thr):
         sad_1_l = v_a_np_1 < thr_l
         
         # Find close to 0 velocities
-        v_avg_np_1 = np.mean(v_a_np_1, axis=1)
+        
+        v_a_np_1_s = v_a_np_1.reshape((len(v_a_np_1), 2, 4))
+        v_a_np_1_s_s = np.sum(np.power(v_a_np_1_s,2),axis=1)
+        v_avg_np_1 = np.mean(v_a_np_1_s_s, axis=1)
         sad_1_0 = v_avg_np_1 < zero_thr
 
         sad_row_1_h = np.bitwise_or.reduce(sad_1_h, axis=1)
@@ -171,7 +174,9 @@ def outlier_remover(df1, df2, zero_thr):
         sad_2_l = v_a_np_2 < thr_l
         
         # Find close to 0 velocities
-        v_avg_np_2 = np.mean(v_a_np_2, axis=1)
+        v_a_np_2_s = v_a_np_2.reshape((len(v_a_np_2), 2, 4))
+        v_a_np_2_s_s = np.sum(np.power(v_a_np_2_s,2),axis=1)
+        v_avg_np_2 = np.min(v_a_np_2_s_s, axis=1)
         sad_2_0 = v_avg_np_2 < zero_thr
 
         sad_row_2_h = np.bitwise_or.reduce(sad_2_h, axis=1)
@@ -209,12 +214,10 @@ def dataset_formating(df_1, df_2):
     saa = saa[cols]
     saa_np = saa.to_numpy()
     av_s = np.mean(saa_np,axis=0)[1]
-    st_s = np.std(saa_np,axis=0)[1]
+    max_rollout_length = np.max(saa_np[saa_np[:,1] > av_s/4.0],axis=0)[1]
+    max_batch_size = len(saa_np[saa_np[:,1] > av_s/4.0])
     
-    min_rollout_length = np.min(saa_np[saa_np[:,1] > av_s - st_s],axis=0)[1]
-    max_batch_size = len(saa_np[saa_np[:,1] > av_s - st_s])
-    
-    traj_inds = saa_np[saa_np[:,1] > av_s - st_s][:,0]
+    traj_inds = saa_np[saa_np[:,1] > av_s/4.0][:,0]
     
     df_1a.set_index('trajectory', drop=False, inplace = True)
     df_2a.set_index('trajectory', drop=False, inplace = True)
@@ -225,4 +228,4 @@ def dataset_formating(df_1, df_2):
     df_1a.reset_index(drop=True, inplace = True)
     df_2a.reset_index(drop=True, inplace = True)
     
-    return min_rollout_length, max_batch_size, df_1a, df_2a
+    return max_rollout_length, max_batch_size, df_1a, df_2a

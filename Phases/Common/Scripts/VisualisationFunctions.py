@@ -51,9 +51,10 @@ def order_vertices(ray):
     return sorted_ray
 
 
-def visualise_trajectory(pred_trajectory, real_trajectory, number_of_steps):
+def visualise_trajectory(pred_trajectory, real_trajectory, number_of_steps=None):
     fig, ax = plt.subplots()
 
+    number_of_steps = len(pred_trajectory)
     # ------------------Extraction------------------
     
     pred_state_0 = pred_trajectory[0]

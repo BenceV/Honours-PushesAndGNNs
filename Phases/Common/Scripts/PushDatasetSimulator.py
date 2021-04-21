@@ -213,6 +213,7 @@ class PushDatasetSimulator:
         
         new_nodes = tf.concat([new_pos, new_vel, input_graph.nodes[..., 4:5]], axis=-1)
 
+        input_graph = input_graph.replace(edges=target_graph.edges)
         input_graph = input_graph.replace(nodes=new_nodes)
         input_graph = input_graph.replace(globals=target_graph.globals)
         
@@ -270,17 +271,20 @@ class PushDatasetSimulator:
 
     def predict_trajectory_velocity(self, model, Xs, Ys, silent=True):
 
-        pred_states = [] 
-        real_states = []
         # Initialise the input state
         input_state = Xs[0]
+        pred_states = [input_state] 
+        real_states = [input_state]
 
         for i,X,Y in zip(range(self.ROLLOUT_TIMESTEPS),Xs,Ys):
             if model is not None:
                 predictions = model(input_state, 1)
-                next_state = self.prediction_to_next_state_velocity(input_state, predictions[0], Y)
-                input_state = next_state
-                pred_states.extend([next_state])
+            else:
+                predictions = [Y]
+
+            next_state = self.prediction_to_next_state_velocity(input_state, predictions[0], Y)
+            input_state = next_state
+            pred_states.extend([next_state])
             real_states.extend([Y])
 
             if not silent:
