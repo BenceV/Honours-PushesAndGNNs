@@ -1,4 +1,3 @@
-
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -14,6 +13,7 @@ import sonnet as snt
 import tensorflow as tf
 import os
 import sys
+import re
 
 import matplotlib.pyplot as plt
 from matplotlib import animation
@@ -21,7 +21,7 @@ from matplotlib.patches import Polygon
 
 import seaborn as sns
 
-def rollout_plot(steps, rollout_error, path_plots, name = "RolloutPlot"):
+def rollout_plot(steps, rollout_error, path_plots, metric = "Position", title = "Rollout Plot"):
     fig = plt.figure(1, figsize=(10, 5))
     
     ax = fig.add_subplot(1, 1, 1)
@@ -33,13 +33,14 @@ def rollout_plot(steps, rollout_error, path_plots, name = "RolloutPlot"):
     ax.plot(x, y, "orange",label = "Average")
     plt.fill_between(x, y-e, y+e, color = "orange", alpha=0.4, label = "Variance")
 
-    ax.set_xlabel('Rollout steps')
-    ax.set_ylabel('Step Error')
-    ax.set_title('Rollout Plot')
+    ax.set_xlabel('Rollout Steps')
+    ax.set_ylabel(str(metric)+' Error')
+    ax.set_title(title)
     
     
     #Save figure
-    file_name = str(name)+".png"
+    name = re.split(' |: ', title)
+    file_name = metric+"".join(name)+".png"
     if os.path.exists(os.path.join(path_plots, file_name)):
         print("The file: "+ file_name + " already exists. Delete it before saving a new plot!")
     else:
@@ -50,7 +51,7 @@ def rollout_plot(steps, rollout_error, path_plots, name = "RolloutPlot"):
     return fig, ax
 
 
-def rollout_plot_log_scale(steps, rollout_error, path_plots, name = "RolloutPlotLogScale"):
+def rollout_plot_log_scale(steps, rollout_error, path_plots, metric = "Position", title = "Rollout Plot: Log Scale"):
     fig = plt.figure(1, figsize=(10, 5))
     
     ax = fig.add_subplot(1, 1, 1)
@@ -62,14 +63,15 @@ def rollout_plot_log_scale(steps, rollout_error, path_plots, name = "RolloutPlot
     ax.plot(x, y, "orange",label = "Average")
     plt.fill_between(x, y-e, y+e, color = "orange", alpha=0.4, label = "Variance")
     
-    ax.set_xlabel('Rollout steps')
-    ax.set_ylabel('Step Error')
-    ax.set_title('Rollout Plot: Log Scale')
+    ax.set_xlabel('Rollout Steps')
+    ax.set_ylabel(str(metric)+' Error: Log Scale')
+    ax.set_title(title)
 
     ax.legend()
 
     #Save figure
-    file_name = str(name)+".png"
+    name = re.split(' |: ', title)
+    file_name = metric+"".join(name)+".png"
     if os.path.exists(os.path.join(path_plots, file_name)):
         print("The file: "+ file_name + " already exists. Delete it before saving a new plot!")
     else:

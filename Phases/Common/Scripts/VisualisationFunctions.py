@@ -4,6 +4,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib import animation
 from matplotlib.patches import Polygon
+import re
 
 def velocity_loss(target_ls, prediction_ls):
     loss = np.mean(np.sum((target_ls-prediction_ls)**2, axis=1), axis=0)
@@ -51,7 +52,7 @@ def order_vertices(ray):
     return sorted_ray
 
 
-def visualise_trajectory(pred_trajectory, real_trajectory, number_of_steps=None):
+def visualise_trajectory(pred_trajectory, real_trajectory, traj_id, number_of_steps = None):
     fig, ax = plt.subplots()
 
     number_of_steps = len(pred_trajectory)
@@ -98,7 +99,7 @@ def visualise_trajectory(pred_trajectory, real_trajectory, number_of_steps=None)
             bbox=dict(fc="none"))
 
 
-    fig.suptitle("Visualisation of trajectory")
+    fig.suptitle("Visualisation of trajectory for trajectory: " +str(traj_id))
     ax.set_xlabel("x (m)")
     ax.set_ylabel("y (m)")
     ax.legend(loc=2)

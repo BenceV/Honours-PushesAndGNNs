@@ -189,7 +189,7 @@ class PushDatasetSimulator:
         Y_g = Y_g.T
         i_np = i_np.T
         
-        return X_g, Y_g, i_np
+        return X_g, Y_g, i_np, traj_inds
 
 
     def convert_trajectories(self, X_g,Y_g):

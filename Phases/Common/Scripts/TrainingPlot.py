@@ -14,6 +14,7 @@ import sonnet as snt
 import tensorflow as tf
 import os
 import sys
+import re
 
 import matplotlib.pyplot as plt
 from matplotlib import animation
@@ -21,7 +22,7 @@ from matplotlib.patches import Polygon
 
 import seaborn as sns
 
-def training_plot(logged_iterations, tr_loss, va_loss, te_loss, path_plots, name = "StepConvergencePlot"):
+def training_plot(logged_iterations, tr_loss, va_loss, te_loss, path_plots, loss = "Step", title = "Convergence Plot"):
     fig = plt.figure(1, figsize=(10, 5))
     
     ax = fig.add_subplot(1, 1, 1)
@@ -35,13 +36,14 @@ def training_plot(logged_iterations, tr_loss, va_loss, te_loss, path_plots, name
     ax.plot(x, y, "green", label="Testing")
 
     ax.set_xlabel('Iterations')
-    ax.set_ylabel('Step loss')
-    ax.set_title('Convergence Plot')
+    ax.set_ylabel(str(loss)+' loss')
+    ax.set_title(title)
     
     ax.legend()
     
     #Save figure
-    file_name = str(name)+".png"
+    name = re.split(' |: ', title)
+    file_name = loss+"".join(name)+".png"
     if os.path.exists(os.path.join(path_plots, file_name)):
         print("The file: "+ file_name + "already exists. Delete it before saving a new plot!")
     else:
@@ -52,7 +54,7 @@ def training_plot(logged_iterations, tr_loss, va_loss, te_loss, path_plots, name
     return fig, ax
 
 
-def training_plot_log_scale(logged_iterations, tr_loss, va_loss, te_loss, path_plots, name = "StepConvergencePlotLogScale"):
+def training_plot_log_scale(logged_iterations, tr_loss, va_loss, te_loss, path_plots, loss = "Step", title = "Convergence Plot: Log Scale"):
     fig = plt.figure(1, figsize=(10, 5))
     
     ax = fig.add_subplot(1, 1, 1)
@@ -67,13 +69,14 @@ def training_plot_log_scale(logged_iterations, tr_loss, va_loss, te_loss, path_p
     ax.plot(x, y, "green", label="Testing")
     
     ax.set_xlabel('Iterations')
-    ax.set_ylabel('Step loss')
-    ax.set_title('Convergence Plot: Log Scale')
+    ax.set_ylabel(str(loss) +' loss')
+    ax.set_title(title)
 
     ax.legend()
 
     #Save figure
-    file_name = str(name)+".png"
+    name = re.split(' |: ', title)
+    file_name =  loss+"".join(name)+".png"
     if os.path.exists(os.path.join(path_plots, file_name)):
         print("The file: "+ file_name + "already exists. Delete it before saving a new plot!")
     else:
