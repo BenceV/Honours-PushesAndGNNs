@@ -1,15 +1,15 @@
 {
   "parameters": {
     "model_parameters": {
-      "learning_rate": 0.002,
+      "learning_rate": 0.0002,
       "ind_block_number_of_layers": 2,
       "ful_block_number_of_layers": 2,
       "ind_block_latent_size": 256,
       "ful_block_latent_size": 256
     },
     "experiment_parameters": {
-      "number_of_training_iterations": 50,
-      "loss_type": "roll",
+      "number_of_training_iterations": 1000,
+      "loss_type": "step",
       "rollout_timesteps": 10,
       "rollout_timesteps_vis": 25,
       "training_batch_size": 16,
