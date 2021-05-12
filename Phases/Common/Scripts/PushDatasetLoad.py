@@ -74,9 +74,11 @@ def collect_trajectory_indeces(dataframe, ts = 0.001, vel_accs = None):
                 "e_vel_y"]
     
     # Create velocity columns
-    dataframe[vel_list] = dataframe[pos_list].diff(periods=-1)*-1 / ts
+    #dataframe[vel_list] = dataframe[pos_list].diff(periods=-1)*-1 / ts
+    dataframe[vel_list] = dataframe[pos_list].diff(periods=1) / ts
     
     ids = dataframe.groupby(['trajectory']).last()['id'].to_numpy()
+    ids = dataframe.groupby(['trajectory']).first()['id'].to_numpy()
     dataframe.loc[ids, vel_list] =  0.0
     
     inds={}
@@ -202,22 +204,25 @@ def outlier_remover(df1, df2, zero_thr):
     return df_1, df_2
 
 
-def dataset_formating(df_1, df_2):
+def dataset_formating(df_1, df_2, roll = None):
     df_1a = df_1.copy()
     df_2a = df_2.copy()
     
-    saa = df_1a.groupby(["trajectory"])[["trajectory"]].count()
+    saa = df_1a.groupby(["trajectory"])[["id"]].count()
     
     saa["traj"] = saa.index.values.tolist()
     cols = saa.columns.tolist()
     cols = cols[-1:] + cols[:-1]
     saa = saa[cols]
     saa_np = saa.to_numpy()
-    av_s = np.mean(saa_np,axis=0)[1]
-    max_rollout_length = np.max(saa_np[saa_np[:,1] > av_s/4.0],axis=0)[1]
-    max_batch_size = len(saa_np[saa_np[:,1] > av_s/4.0])
     
-    traj_inds = saa_np[saa_np[:,1] > av_s/4.0][:,0]
+    if roll is None:
+        roll = np.mean(saa_np,axis=0)[1]
+    
+    max_rollout_length = np.min(saa_np[saa_np[:,1] >= roll],axis=0)[1]
+    max_batch_size = len(saa_np[saa_np[:,1] >= roll])
+    
+    traj_inds = saa_np[saa_np[:,1] >= roll][:,0]
     
     df_1a.set_index('trajectory', drop=False, inplace = True)
     df_2a.set_index('trajectory', drop=False, inplace = True)

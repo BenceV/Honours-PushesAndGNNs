@@ -128,15 +128,6 @@ def rollout_loss_sum_velocity(X, Y):
     losses = tf.convert_to_tensor(losses, dtype=tf.float32)
     return tf.math.reduce_sum(losses, axis=0)
 
-def rollout_loss_mean_position(X, Y):
-    losses = []
-    for i in range(len(X)):
-        x = X[i]
-        y = Y[i]
-        losses.append(position_loss_single_roll(x,y))
-        
-    losses = tf.convert_to_tensor(losses, dtype=tf.float32)
-    return tf.math.reduce_mean(losses,axis=0)
 
 def rollout_loss_max_position(X, Y):
     losses = []
@@ -185,3 +176,13 @@ def rollout_error_position(X, Y):
     losses = np.array(losses)
     steps = np.array(steps)
     return steps, losses
+
+def rollout_loss_mean_position(X, Y):
+    losses = []
+    for i in range(len(X)):
+        x = X[i]
+        y = Y[i]
+        losses.append(position_loss_single_roll(x,y))
+        
+    losses = tf.convert_to_tensor(losses, dtype=tf.float32)
+    return tf.math.reduce_mean(losses,axis=0)

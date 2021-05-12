@@ -213,8 +213,8 @@ class PushDatasetSimulator:
         
         new_nodes = tf.concat([new_pos, new_vel, input_graph.nodes[..., 4:5]], axis=-1)
 
-        input_graph = input_graph.replace(edges=target_graph.edges)
         input_graph = input_graph.replace(nodes=new_nodes)
+        input_graph = input_graph.replace(edges=target_graph.edges)
         input_graph = input_graph.replace(globals=target_graph.globals)
         
         return input_graph

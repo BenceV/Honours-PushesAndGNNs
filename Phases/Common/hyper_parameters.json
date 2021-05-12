@@ -9,7 +9,7 @@
     },
     "experiment_parameters": {
       "number_of_training_iterations": 1000,
-      "loss_type": "step",
+      "loss_type": "rollout",
       "rollout_timesteps": 10,
       "rollout_timesteps_vis": 25,
       "training_batch_size": 16,
