@@ -1,2 +1,0 @@
-model_checkpoint_path: "/home/bence/git_workspace/Dyadic_Collaboration/Graph_Networks/Phases/Phase2/Moving_Rigidbody_Network_sizes/no_gravity_fixed_box_fixed_not_in_error/ntr=100000_btr=256_bte=100_bge=100_ful_l_n=3_ful_l_s=64_ind_l_n=3_ind_l_s=64_date=062520seed=5/Saves/model.ckpt"
-all_model_checkpoint_paths: "/home/bence/git_workspace/Dyadic_Collaboration/Graph_Networks/Phases/Phase2/Moving_Rigidbody_Network_sizes/no_gravity_fixed_box_fixed_not_in_error/ntr=100000_btr=256_bte=100_bge=100_ful_l_n=3_ful_l_s=64_ind_l_n=3_ind_l_s=64_date=062520seed=5/Saves/model.ckpt"
